@@ -1,0 +1,26 @@
+#!/bin/bash
+
+results="$PWD/output.txt"
+blacklist='v0\.(0\.24|2\.0\.rc1|2\.0\.rc2|8\.0)'
+
+rm -f $results
+
+log() {
+  echo "$1" 1>&2
+}
+
+cd feedjira
+
+git tag | while read tag; do
+  [[ $tag =~ $blacklist ]] && continue
+  log "Running at $tag"
+  log
+  git checkout -q $tag &> /dev/null
+  echo $tag "results" >> $results
+  rm Gemfile.lock &> /dev/null
+  bundle check || bundle
+  TAG=$tag bundle exec ruby ../benchmark.rb >> $results
+done
+
+log "Done"
+git checkout -q master
