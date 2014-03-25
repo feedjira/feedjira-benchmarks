@@ -28,6 +28,7 @@ Gchart.line(
   data: data,
   filename: 'chart.png',
   format: 'file',
+  line_color: '0e8292',
   size: '600x400',
-  title: 'parse'
+  title: "Benchmarking Feedjira's Parse Method At Each Version (results in seconds)",
 )
