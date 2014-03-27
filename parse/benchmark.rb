@@ -5,9 +5,9 @@ module Feedzirra; end
 
 klass = ENV['TAG'] >= 'v0.9.0' ? Feedjira : Feedzirra
 
-require File.expand_path(File.dirname(__FILE__) + "/feedjira/lib/#{klass.to_s.downcase}")
+require File.expand_path(File.dirname(__FILE__) + "/../feedjira/lib/#{klass.to_s.downcase}")
 
-files = Dir.glob(File.dirname(__FILE__) + '/feed_xml/*.xml')
+files = Dir.glob(File.dirname(__FILE__) + '/../feed_xml/*.xml')
 xmls = files.map { |f| File.read f }
 
 Benchmark.bmbm do |b|

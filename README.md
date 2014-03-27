@@ -6,43 +6,36 @@ version of the gem.
 ## Running the Benchmarks
 
 Its important for benchmarks to be repeatable and verifiyable by another party.
-To run these benchmarks first clone down this repo, then `cd` into it. From
-there you'll need to clone down the main feedjira code to be used in the
-benchmark.
+Getting setup to run the benchmarks requires that you first clone down this repo
+and then also clone down the feedjira one:
 
-Actually running the benchmarks is as easy as:
+```
+$ git clone git://github.com/feedjira/feedjira-benchmarks
+$ cd feedjira-benchmarks
+$ git clone git://github.com/feedjira/feedjira
+```
 
-$ ./runner feedjira
+This will give you a directory structure like this:
 
+```
+feedjira-benchmarks
+|-- feed_xml
+|-- feedjira
++-- parse
+```
 
----
+Next bundle to grab the project's requirements and you'll be all set to run the
+various benchmarks.
 
+## Running the parse benchmark
 
-To get this to work, you'd first want to bundle - that just gets the project's
-Gemfile. Then you'd want to bundle on each version of the gem.
+This benchmark is run against each version of the gem - run it like this:
 
-From there, you can run the benchmarks and generate the graphs.
+```
+$ parse/run-all
+```
 
-1. clone down the repo
+This command will output two files:
 
-    $ git clone git://github.com/feedjira/feedjira-benchmarks
-
-2. bundle for the Gemfile
-
-    $ bundle
-
-3. clone down the feedjira project
-
-    $ git clone git://github.com/feedjira/feedjira
-
-4. bundle at each version of gem
-
-    $ ./runner prep.rb
-
-5. run the benchmarks
-
-    $ ./runner test.rb
-
-6. generate the graphs
-
-    $ ruby graph.rb
+* parse/results.txt - the raw numbers from the benchmark
+* parse/parse-benchmark.png - those raw numbers in chart form

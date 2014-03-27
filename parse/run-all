@@ -1,6 +1,6 @@
 #!/bin/bash
 
-results="$PWD/output.txt"
+results="$PWD/parse/results.txt"
 blacklist='v0\.(0\.24|2\.0\.rc1|2\.0\.rc2|8\.0)'
 
 rm -f $results
@@ -19,8 +19,13 @@ git tag | while read tag; do
   echo $tag "results" >> $results
   rm Gemfile.lock &> /dev/null
   bundle check || bundle
-  TAG=$tag bundle exec ruby ../benchmark.rb >> $results
+  TAG=$tag bundle exec ruby ../parse/benchmark.rb >> $results
 done
 
-log "Done"
+log "Done running the parse benchmark."
 git checkout -q master
+
+cd ../parse
+
+ruby chart.rb
+log "Done producing the parse chart."

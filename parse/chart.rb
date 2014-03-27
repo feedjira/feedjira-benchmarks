@@ -16,7 +16,7 @@ class Point
 end
 
 points = []
-File.read('output.txt').split("\n").each_slice(7) { |r| points << Point.new(r) }
+File.read('results.txt').split("\n").each_slice(7) { |r| points << Point.new(r) }
 
 data = points.map(&:value).map &:to_f
 versions = points.map &:version
@@ -26,7 +26,7 @@ Gchart.line(
   axis_range: [nil, [0, data.max, 0.5]],
   axis_with_labels: ['x', 'y'],
   data: data,
-  filename: 'chart.png',
+  filename: 'parse-benchmark.png',
   format: 'file',
   line_color: '0e8292',
   size: '600x400',

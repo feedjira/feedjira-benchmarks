@@ -1,3 +1,5 @@
-feedjira
 .ruby-gemset
 .ruby-version
+feedjira
+parse/parse-benchmark.png
+parse/results.txt
