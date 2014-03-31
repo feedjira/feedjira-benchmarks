@@ -1,7 +1,8 @@
 # Feedjira Benchmarks
 
-In order to keep Feedjira fast, this project runs a benchmark against every
-version of the gem.
+This project contains the benchmarks used to ensure [Feedjira][f] stays fast.
+
+[f]: https://github.com/feedjira/feedjira
 
 ## Running the Benchmarks
 
@@ -21,11 +22,19 @@ This will give you a directory structure like this:
 feedjira-benchmarks
 |-- feed_xml
 |-- feedjira
+|-- fetch
 +-- parse
 ```
 
-Next bundle to grab the project's requirements and you'll be all set to run the
-various benchmarks.
+Next `bundle` to grab the project's requirements.
+
+Lastly, producing the charts does rely on having R installed. If you're on a
+Mac, this should work:
+
+```
+$ brew tap homebrew/science
+$ brew install r
+```
 
 ## Running the parse benchmark
 
@@ -39,3 +48,18 @@ This command will output two files:
 
 * parse/results.txt - the raw numbers from the benchmark
 * parse/parse-benchmark.png - those raw numbers in chart form
+
+## Running the fetching benchmark
+
+This benchmark compares the speeds of various fetching options - run it like
+this:
+
+```
+$ fetch/run
+```
+
+This command will output three files:
+
+* fetch/results.txt - the raw numbers from the benchmark
+* fetch/results.csv - the numbers converted to CSV to produce the chart
+* fetch/fetch-benchmark.png - that CSV converted to chart form
