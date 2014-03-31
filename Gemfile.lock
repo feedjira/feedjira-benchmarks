@@ -1,10 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    curb (0.8.5)
     googlecharts (1.6.8)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  curb
   googlecharts

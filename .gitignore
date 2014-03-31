@@ -3,3 +3,6 @@
 feedjira
 parse/parse-benchmark.png
 parse/results.txt
+fetch/fetch-benchmark.png
+fetch/results.csv
+fetch/results.txt
