@@ -44,10 +44,11 @@ This benchmark is run against each version of the gem - run it like this:
 $ parse/run-all
 ```
 
-This command will output two files:
+This command will output three files:
 
 * parse/results.txt - the raw numbers from the benchmark
-* parse/parse-benchmark.png - those raw numbers in chart form
+* parse/results.csv - the numbers converted to CSV to produce the chart
+* parse/parse-benchmark.png - that CSV converted to chart form
 
 ## Running the fetching benchmark
 

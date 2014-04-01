@@ -1,9 +1,11 @@
 #!/bin/bash
 
-results="$PWD/parse/results.txt"
+txt_results="$PWD/parse/results.txt"
+csv_results="$PWD/parse/results.csv"
 blacklist='v0\.(0\.24|2\.0\.rc1|2\.0\.rc2|8\.0)'
 
-rm -f $results
+rm -f $txt_results $csv_results
+echo "tag,time" >> $csv_results
 
 log() {
   echo "$1" 1>&2
@@ -16,10 +18,10 @@ git tag | while read tag; do
   log "Running at $tag"
   log
   git checkout -q $tag &> /dev/null
-  echo $tag "results" >> $results
+  echo $tag "results" >> $txt_results
   rm Gemfile.lock &> /dev/null
   bundle check || bundle
-  TAG=$tag bundle exec ruby ../parse/benchmark.rb >> $results
+  TAG=$tag bundle exec ruby ../parse/benchmark.rb >> $txt_results
 done
 
 log "Done running the parse benchmark."
@@ -27,5 +29,5 @@ git checkout -q master
 
 cd ../parse
 
-ruby chart.rb
+R --vanilla < chart.r
 log "Done producing the parse chart."

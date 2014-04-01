@@ -2,6 +2,7 @@
 .ruby-version
 feedjira
 parse/parse-benchmark.png
+parse/results.csv
 parse/results.txt
 fetch/fetch-benchmark.png
 fetch/results.csv
