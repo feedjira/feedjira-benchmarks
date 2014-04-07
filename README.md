@@ -47,7 +47,7 @@ $ parse/run-all
 This command will output three files:
 
 * parse/results.txt - the raw numbers from the benchmark
-* parse/results.csv - the numbers converted to CSV to produce the chart
+* parse/results.csv - the totals from the raw numbers in CSV
 * parse/parse-benchmark.png - that CSV converted to chart form
 
 ## Running the fetching benchmark
@@ -62,5 +62,5 @@ $ fetch/run
 This command will output three files:
 
 * fetch/results.txt - the raw numbers from the benchmark
-* fetch/results.csv - the numbers converted to CSV to produce the chart
+* fetch/results.csv - the totals from the raw numbers in CSV
 * fetch/fetch-benchmark.png - that CSV converted to chart form
