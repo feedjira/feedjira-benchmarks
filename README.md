@@ -41,7 +41,7 @@ $ brew install r
 This benchmark is run against each version of the gem - run it like this:
 
 ```
-$ parse/run-all
+$ parse/run
 ```
 
 This command will output three files:
