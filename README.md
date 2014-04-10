@@ -23,6 +23,7 @@ feedjira-benchmarks
 |-- feed_xml
 |-- feedjira
 |-- fetch
+|-- others
 +-- parse
 ```
 
@@ -64,3 +65,18 @@ This command will output three files:
 * fetch/results.txt - the raw numbers from the benchmark
 * fetch/results.csv - the totals from the raw numbers in CSV
 * fetch/fetch-benchmark.png - that CSV converted to chart form
+
+## Running the others benchmark
+
+This benchmark compares Feedjira with other Ruby feed libraries in terms of
+parse speed:
+
+```
+$ others/run
+```
+
+This command will output three files:
+
+* others/results.txt - the raw numbers from the benchmark
+* others/results.csv - the totals from the raw numbers in CSV
+* others/others-benchmark.png - that CSV converted to chart form
