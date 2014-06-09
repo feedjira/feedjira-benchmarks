@@ -1,0 +1,18 @@
+#!/bin/bash
+
+results="$PWD/handlers/results.txt"
+
+rm -f $results
+
+log() {
+  echo "$1" 1>&2
+}
+
+bundle exec ruby handlers/benchmark.rb >> $results
+
+log "Done running the handlers benchmark."
+
+cd handlers
+
+R --vanilla < chart.r
+log "Done producing the handlers chart."
