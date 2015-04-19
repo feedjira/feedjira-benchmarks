@@ -80,3 +80,18 @@ This command will output three files:
 * others/results.txt - the raw numbers from the benchmark
 * others/results.csv - the totals from the raw numbers in CSV
 * others/others-benchmark.png - that CSV converted to chart form
+
+## Running the handlers benchmark
+
+This benchmark compares Feedjira with different `sax-machine`
+handlers:
+
+```
+$ handlers/run
+```
+
+This command will output three files:
+
+* handlers/results.txt - the raw numbers from the benchmark
+* handlers/results.csv - the totals from the raw numbers in CSV
+* handlers/handlers-benchmark.png - that CSV converted to chart form
