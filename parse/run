@@ -2,7 +2,7 @@
 
 txt_results="$PWD/parse/results.txt"
 csv_results="$PWD/parse/results.csv"
-blacklist='v0\.(0\.24|2\.0\.rc1|2\.0\.rc2|8\.0)'
+taglist=("3.1.0" "3.1.1" "3.1.2" "3.2.0")
 
 rm -f $txt_results $csv_results
 echo "tag,time" >> $csv_results
@@ -13,19 +13,28 @@ log() {
 
 cd feedjira
 
-git tag | while read tag; do
-  [[ $tag =~ $blacklist ]] && continue
-  log "Running at $tag"
-  log
-  git checkout -q $tag &> /dev/null
-  echo $tag "results" >> $txt_results
-  rm Gemfile.lock &> /dev/null
-  bundle check || bundle
-  TAG=$tag bundle exec ruby ../parse/benchmark.rb >> $txt_results
+for tag in "${taglist[@]}"; do
+    log "Running at $tag"
+    log
+    git checkout -q $tag &> /dev/null
+    echo $tag "results" >> $txt_results
+    rm Gemfile.lock &> /dev/null
+    bundle check || bundle
+    TAG=$tag bundle exec ruby ../parse/benchmark.rb
 done
+# git tag | while read tag; do
+#   [[ $tag =~ $denylist ]] && continue
+#   log "Running at $tag"
+#   log
+#   git checkout -q $tag &> /dev/null
+#   echo $tag "results" >> $txt_results
+#   rm Gemfile.lock &> /dev/null
+#   bundle check || bundle
+#   TAG=$tag bundle exec ruby ../parse/benchmark.rb >> $txt_results
+# done
 
 log "Done running the parse benchmark."
-git checkout -q master
+git checkout -q main
 
 cd ../parse
 

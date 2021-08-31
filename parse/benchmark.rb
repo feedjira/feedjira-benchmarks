@@ -1,10 +1,9 @@
 require 'benchmark'
 
 module Feedjira; end
-module Feedzirra; end
 
 tag = ENV['TAG']
-klass = tag >= 'v0.9.0' ? Feedjira : Feedzirra
+klass = Feedjira
 
 require File.expand_path(File.dirname(__FILE__) + "/../feedjira/lib/#{klass.to_s.downcase}")
 
@@ -14,7 +13,7 @@ xmls = files.map { |f| File.read f }
 benchmarks = Benchmark.bmbm do |b|
   b.report('parse') do
     10.times do
-      xmls.each { |xml| klass::Feed.parse xml }
+      xmls.each { |xml| klass.parse(xml) }
     end
   end
 end
